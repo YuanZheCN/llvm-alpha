@@ -1,0 +1,23 @@
+
+[common]
+subdirectories =
+  MCTargetDesc TargetInfo
+
+[component_0]
+type = TargetGroup
+name = SmallBird
+parent = Target
+
+[component_1]
+type = Library
+name = SmallBirdCodeGen
+parent = SmallBird
+required_libraries =
+                     CodeGen Core MC
+                     SmallBirdDesc
+                     SmallBirdInfo
+                     SelectionDAG
+                     Support
+                     Target
+
+add_to_library_groups = SmallBird

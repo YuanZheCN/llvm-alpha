@@ -131,6 +131,7 @@ enum { EV_NONE = 0, EV_CURRENT = 1 };
 //    http://www.uxsglobal.com/developers/gabi/latest/ch4.eheader.html
 enum {
   EM_NONE = 0,           // No machine
+  EM_SMALLBIRD = 666,    //My small bird
   EM_M32 = 1,            // AT&T WE 32100
   EM_SPARC = 2,          // SPARC
   EM_386 = 3,            // Intel 386
@@ -377,6 +378,20 @@ enum {
 };
 
 #define ELF_RELOC(name, value) name = value,
+
+// Mysmall Birds
+enum {
+#include "ELFRelocs/SmallBird.def"
+};
+
+enum {
+EF_SMALLBIRD_NOREORDER = 0x00000001, // Don't reorder instructions
+EF_SMALLBIRD_PIC       = 0x00000002,       // Position independent code
+EF_SMALLBIRD_ARCH_32   = 0x50000000,   // CPU 32 instruction set per linux not elf.h
+EF_SMALLBIRD_ARCH      = 0xf0000000       // Mask for applying EF_CPU0_ARCH_ variant
+};
+
+
 
 // X86_64 relocations.
 enum {

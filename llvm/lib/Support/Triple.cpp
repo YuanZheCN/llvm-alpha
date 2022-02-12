@@ -23,7 +23,7 @@ using namespace llvm;
 StringRef Triple::getArchTypeName(ArchType Kind) {
   switch (Kind) {
   case UnknownArch:    return "unknown";
-
+  case SmallBird:      return "SmallBird";
   case aarch64:        return "aarch64";
   case aarch64_32:     return "aarch64_32";
   case aarch64_be:     return "aarch64_be";
@@ -95,6 +95,7 @@ StringRef Triple::getArchTypePrefix(ArchType Kind) {
   case aarch64_32:  return "aarch64";
 
   case arc:         return "arc";
+  case SmallBird:   return "SmallBird";
 
   case arm:
   case armeb:
@@ -281,6 +282,7 @@ static Triple::ArchType parseBPFArch(StringRef ArchName) {
 Triple::ArchType Triple::getArchTypeForLLVMName(StringRef Name) {
   Triple::ArchType BPFArch(parseBPFArch(Name));
   return StringSwitch<Triple::ArchType>(Name)
+    .Case("SmallBird",SmallBird)
     .Case("aarch64", aarch64)
     .Case("aarch64_be", aarch64_be)
     .Case("aarch64_32", aarch64_32)
@@ -410,6 +412,7 @@ static Triple::ArchType parseARMArch(StringRef ArchName) {
 
 static Triple::ArchType parseArch(StringRef ArchName) {
   auto AT = StringSwitch<Triple::ArchType>(ArchName)
+    .Cases("SmallBird","SmallBird", Triple::SmallBird)
     .Cases("i386", "i486", "i586", "i686", Triple::x86)
     // FIXME: Do we need to support these?
     .Cases("i786", "i886", "i986", Triple::x86)
@@ -702,6 +705,7 @@ static StringRef getObjectFormatTypeName(Triple::ObjectFormatType Kind) {
 static Triple::ObjectFormatType getDefaultFormat(const Triple &T) {
   switch (T.getArch()) {
   case Triple::UnknownArch:
+  case Triple::SmallBird:
   case Triple::aarch64:
   case Triple::aarch64_32:
   case Triple::arm:
@@ -1311,6 +1315,7 @@ static unsigned getArchPointerBitWidth(llvm::Triple::ArchType Arch) {
   case llvm::Triple::wasm32:
   case llvm::Triple::x86:
   case llvm::Triple::xcore:
+  case llvm::Triple::SmallBird:
     return 32;
 
   case llvm::Triple::aarch64:
@@ -1356,6 +1361,7 @@ Triple Triple::get32BitArchVariant() const {
   Triple T(*this);
   switch (getArch()) {
   case Triple::UnknownArch:
+  case Triple::SmallBird:
   case Triple::amdgcn:
   case Triple::avr:
   case Triple::bpfeb:

@@ -8,7 +8,7 @@ namespace llvm {
   class Triple;
 
   Target &getTheSmallBirdTarget();
-  Target &getTheSmallBirdelTarget();
+  //Target &getTheSmallBirdelTarget();
 }
 
 // Defines symbolic names for SmallBird registers. This defines a mapping from

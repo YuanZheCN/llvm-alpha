@@ -1,6 +1,0 @@
-[component_0]
-type = Library
-name = SmallBirdInfo
-parent = SmallBird
-required_libraries = Support
-add_to_library_groups = SmallBird

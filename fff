@@ -1,0 +1,34 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   llvm/CMakeLists.txt
+#	modified:   llvm/include/llvm/ADT/Triple.h
+#	modified:   llvm/include/llvm/BinaryFormat/ELF.h
+#	new file:   llvm/include/llvm/BinaryFormat/ELFRelocs/SmallBird.def
+#	modified:   llvm/include/llvm/Object/ELFObjectFile.h
+#	modified:   llvm/lib/Object/ELF.cpp
+#	modified:   llvm/lib/Support/Triple.cpp
+#	new file:   llvm/lib/Target/SmallBird/CMakeLists.txt
+#	new file:   llvm/lib/Target/SmallBird/LLVMBuild.txt
+#	new file:   llvm/lib/Target/SmallBird/MCTargetDesc/CMakeLists.txt
+#	new file:   llvm/lib/Target/SmallBird/MCTargetDesc/LLVMBuild.txt
+#	new file:   llvm/lib/Target/SmallBird/MCTargetDesc/SmallBirdMCTargetDesc.cpp
+#	new file:   llvm/lib/Target/SmallBird/MCTargetDesc/SmallBirdMCTargetDesc.h
+#	new file:   llvm/lib/Target/SmallBird/SmallBird.h
+#	new file:   llvm/lib/Target/SmallBird/SmallBird.td
+#	new file:   llvm/lib/Target/SmallBird/SmallBirdInstrFormats.td
+#	new file:   llvm/lib/Target/SmallBird/SmallBirdInstrInfo.td
+#	new file:   llvm/lib/Target/SmallBird/SmallBirdRegisterInfo.td
+#	new file:   llvm/lib/Target/SmallBird/SmallBirdSchedule.td
+#	new file:   llvm/lib/Target/SmallBird/SmallBirdTargetMachine.cpp
+#	new file:   llvm/lib/Target/SmallBird/SmallBirdTargetMachine.h
+#	new file:   llvm/lib/Target/SmallBird/TargetInfo/CMakeLists.txt
+#	new file:   llvm/lib/Target/SmallBird/TargetInfo/LLVMBuild.txt
+#	new file:   llvm/lib/Target/SmallBird/TargetInfo/SmallBirdTargetInfo.cpp
+#
+first version

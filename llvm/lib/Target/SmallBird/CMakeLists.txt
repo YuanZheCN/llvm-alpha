@@ -10,6 +10,8 @@ tablegen(LLVM SmallBirdGenRegisterInfo.inc -gen-register-info)
 tablegen(LLVM SmallBirdGenInstrInfo.inc -gen-instr-info)
 tablegen(LLVM SmallBirdGenSubtargetInfo.inc -gen-subtarget)
 tablegen(LLVM SmallBirdGenMCPseudoLowering.inc -gen-pseudo-lowering)
+tablegen(LLVM SmallBirdGenDAGISel.inc -gen-dag-isel)
+tablegen(LLVM SmallBirdGenCallingConv.inc -gen-callingconv)
 
 # SmallBirdCommonTableGen must be defined
 add_public_tablegen_target(SmallBirdCommonTableGen)
@@ -17,7 +19,34 @@ add_public_tablegen_target(SmallBirdCommonTableGen)
 # SmallBirdCodeGen should match with LLVMBuild.txt SmallBirdCodeGen
 add_llvm_target(SmallBirdCodeGen
   SmallBirdTargetMachine.cpp
+  SmallBirdInstrInfo.cpp
+  SmallBirdISelLowering.cpp
+  SmallBirdMachineFunctionInfo.cpp
+  SmallBirdRegisterInfo.cpp
+  SmallBirdFrameLowering.cpp
+  SmallBirdSEFrameLowering.cpp
+  SmallBirdSEInstrInfo.cpp
+  SmallBirdSEISelLowering.cpp
+  SmallBirdSERegisterInfo.cpp
+  SmallBirdSubtarget.cpp
+  SmallBirdTargetObjectFile.cpp
+  
+  LINK_COMPONENTS
+  Analysis
+  AsmPrinter
+  CodeGen
+  Core
+  MC
+  SmallBirdDesc
+  SmallBirdInfo
+  SelectionDAG
+  Support
+  Target
+  GlobalISel
+  ADD_TO_COMPONENT
+  SmallBird
   )
+  
 
 # Should match with "subdirectories = MCTargetDesc TargetInfo" in LLVMBuild.txt
 add_subdirectory(TargetInfo)

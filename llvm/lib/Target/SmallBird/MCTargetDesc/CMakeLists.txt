@@ -1,4 +1,4 @@
 
-add_llvm_library(LLVMCpu0Desc
+add_llvm_library(LLVMSmallBirdDesc
   SmallBirdMCTargetDesc.cpp
   )

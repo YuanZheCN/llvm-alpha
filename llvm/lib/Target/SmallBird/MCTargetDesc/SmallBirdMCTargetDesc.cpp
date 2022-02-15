@@ -1,3 +1,16 @@
+//===-- SmallBirdMCTargetDesc.cpp - SmallBird Target Descriptions ---------*- C++ -*-===//
+//
+//                    The LLVM Compiler Infrastructure
+//
+// This file is distributed under the University of Illinois Open Source
+// License. See LICENSE.TXT for details.
+//
+//===----------------------------------------------------------------------===//
+//
+// This file provides SmallBird specific target descirptions.
+//
+//===----------------------------------------------------------------------===//
+
 #include "SmallBirdMCTargetDesc.h"
 #include "llvm/MC/MachineLocation.h"
 #include "llvm/MC/MCELFStreamer.h"
@@ -10,7 +23,7 @@
 #include "llvm/Support/CommandLine.h"
 #include "llvm/Support/ErrorHandling.h"
 #include "llvm/Support/FormattedStream.h"
-#include "llvm/Support/TargetRegistry.h"
+#include "llvm/MC/TargetRegistry.h"
 
 using namespace llvm;
 

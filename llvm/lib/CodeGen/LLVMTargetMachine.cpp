@@ -33,6 +33,7 @@
 #include "llvm/Target/TargetLoweringObjectFile.h"
 #include "llvm/Target/TargetMachine.h"
 #include "llvm/Target/TargetOptions.h"
+#include <iostream>
 using namespace llvm;
 
 static cl::opt<bool> EnableTrapUnreachable("trap-unreachable",
@@ -41,6 +42,9 @@ static cl::opt<bool> EnableTrapUnreachable("trap-unreachable",
 
 void LLVMTargetMachine::initAsmInfo() {
   MRI.reset(TheTarget.createMCRegInfo(getTargetTriple().str()));
+  std::cout <<"HAHAHAHA!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+  std::cout <<getTargetTriple().str() << std::endl;
+
   assert(MRI && "Unable to create reg info");
   MII.reset(TheTarget.createMCInstrInfo());
   assert(MII && "Unable to create instruction info");

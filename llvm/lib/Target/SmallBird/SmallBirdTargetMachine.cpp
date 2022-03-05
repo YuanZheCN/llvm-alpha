@@ -14,6 +14,7 @@
 #include "SmallBirdTargetMachine.h"
 #include "SmallBird.h"
 #include "SmallBirdTargetObjectFile.h"
+#include "SmallBirdSEISelDAGToDAG.h"
 
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/CodeGen/Passes.h"
@@ -145,6 +146,11 @@ public:
   const SmallBirdSubtarget &getSmallBirdSubtarget() const {
     return *getSmallBirdTargetMachine().getSubtargetImpl();
   }
+
+  bool addInstSelector() override{
+    addPass(createSmallBirdSEISelDAG(getSmallBirdTargetMachine(), getOptLevel()));
+    return false;
+  } 
 };
 } // end namespace
 

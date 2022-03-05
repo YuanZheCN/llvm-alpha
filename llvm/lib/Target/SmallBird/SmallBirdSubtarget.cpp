@@ -21,6 +21,12 @@ using namespace llvm;
 
 extern bool FixGlobalBaseReg;
 
+static cl::opt<bool> EnableOverflowOpt
+                 ("cpu0-enable-overflow", cl::Hidden, cl::init(false),
+                 cl::desc("Use trigger overflow instructions add and sub \
+                 instead of non-overflow instructions addu and subu"));
+
+
 void SmallBirdSubtarget::anchor() { }
 
 SmallBirdSubtarget::SmallBirdSubtarget(const Triple &TT, const StringRef CPU,

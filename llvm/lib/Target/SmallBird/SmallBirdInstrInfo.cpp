@@ -28,3 +28,14 @@ unsigned SmallBirdInstrInfo::GetInstSizeInBytes(const MachineInstr &MI) const {
       return MI.getDesc().getSize();
   }
 }
+
+MachineMemOperand *
+SmallBirdInstrInfo::GetMemOperand(MachineBasicBlock &MBB, int FI,
+                             MachineMemOperand::Flags Flags) const {
+  MachineFunction &MF = *MBB.getParent();
+  MachineFrameInfo &MFI = MF.getFrameInfo();
+  Align Align_a = MFI.getObjectAlign(FI);
+
+  return MF.getMachineMemOperand(MachinePointerInfo::getFixedStack(MF, FI),
+                                 Flags, MFI.getObjectSize(FI), Align_a);
+}

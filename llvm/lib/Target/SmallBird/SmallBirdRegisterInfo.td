@@ -31,6 +31,10 @@ let Namespace = "SmallBird" in {
 
   def PC   : SmallBirdC0Reg<0, "pc">,    DwarfRegNum<[20]>;
   def EPC  : SmallBirdC0Reg<1, "epc">,   DwarfRegNum<[21]>;
+
+
+  def HI   : SmallBirdReg<0, "ac0">, DwarfRegNum<[18]>;
+  def LO   : SmallBirdReg<0, "ac0">, DwarfRegNum<[19]>;
 }
 
 
@@ -55,3 +59,5 @@ def SR : RegisterClass<"SmallBird", [i32], 32, (add SW)>;
 def C0Regs : RegisterClass<"SmallBird", [i32], 32, (add PC, EPC)>;
 
 def GPROut : RegisterClass<"SmallBird", [i32], 32, (add (sub CPURegs, SW))>;
+
+def HILO   : RegisterClass<"SmallBird", [i32], 32, (add HI, LO)>;

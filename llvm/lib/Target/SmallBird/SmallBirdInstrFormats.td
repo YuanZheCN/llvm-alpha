@@ -123,3 +123,27 @@ class FJ<bits<8> op, dag outs, dag ins, string asmStr,
 
   let Inst{23-0} = addr;
 }
+
+//===----------------------------------------------------------------------===//
+// Pseudo Instructions Format
+//===----------------------------------------------------------------------===//
+
+// SmallBird Pseudo Instructions Format
+class SmallBirdPseudo<dag outs, dag ins, string asmstr, list<dag> pattern,
+                 InstrItinClass itin = IIPseudo>
+    : SmallBirdInst<outs, ins, asmstr, pattern, itin, Pseudo> {
+  let isCodeGenOnly = 1;
+  let isPseudo = 1;
+}
+
+// SmallBird32 Pseudo Instruction Format
+class PseudoSE<dag outs, dag ins, list<dag> pattern,
+               InstrItinClass itin = IIPseudo>
+    : SmallBirdPseudo<outs, ins, "", pattern> {}
+
+// Pseudo-instructios for alternate assembly syntax (never used by codegen)
+class SmallBirdAsmPseudoInst<dag outs, dag ins, string asmstr>
+    : SmallBirdInst<outs, ins, asmstr, [], IIPseudo, Pseudo> {
+  let isPseudo = 1;
+  let Pattern = [];
+}
